@@ -1,0 +1,25 @@
+{
+  "name": "cra-template-ultralight",
+  "version": "0.1.0",
+  "description": "A CRA template for building applications with Ultralight and React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igetgames/ultralight-cra.git"
+  },
+  "keywords": [
+    "ultralight",
+    "react",
+    "create-react-app",
+    "cra-template"
+  ],
+  "author": "Marcus R. Brown <contact@marcusrbrown.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igetgames/ultralight-cra/issues"
+  },
+  "homepage": "https://github.com/igetgames/ultralight-cra#readme"
+}
