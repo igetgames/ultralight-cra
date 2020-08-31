@@ -1,5 +1,6 @@
 [Bb]uild/
 build_*/
 node_modules
+*.tgz
 .DS_Store
 .vscode
