@@ -1,6 +1,6 @@
 {
   "name": "cra-template-ultralight",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "template.json",
   "description": "A CRA template for building applications with Ultralight and React",
   "files": [
