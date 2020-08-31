@@ -1,4 +1,5 @@
-# Ignore build/bin directories
 [Bb]uild/
 build_*/
+node_modules
 .DS_Store
+.vscode
