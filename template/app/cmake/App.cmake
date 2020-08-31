@@ -65,7 +65,7 @@ MACRO(ADD_APP source_list)
 
   if (APPLE)
     # Enable High-DPI on macOS through our custom Info.plist template
-    set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Info.plist.in) 
+    set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Info.plist.in)
   endif()
 
   if (MSVC)
@@ -75,13 +75,17 @@ MACRO(ADD_APP source_list)
 
   # Copy all binaries to target directory
   add_custom_command(TARGET ${APP_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${ULTRALIGHT_BINARY_DIR}" $<TARGET_FILE_DIR:${APP_NAME}>) 
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${ULTRALIGHT_BINARY_DIR}" $<TARGET_FILE_DIR:${APP_NAME}>)
 
   if (APPLE)
-    set(ASSETS_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/../Resources/assets") 
+    set(ASSETS_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/../Resources/assets")
   else ()
-    set(ASSETS_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/assets") 
-  endif () 
+    set(ASSETS_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/assets")
+  endif ()
+
+  # Copy Create React App build artifacts to the assets directory
+  add_custom_command(TARGET ${APP_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/../build/" "${ASSETS_PATH}")
 
   # Copy assets to assets path
   add_custom_command(TARGET ${APP_NAME} POST_BUILD
@@ -94,10 +98,10 @@ MACRO(ADD_APP source_list)
   endif ()
 
   if (APPLE)
-    set(RESOURCES_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/../Resources/resources") 
+    set(RESOURCES_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/../Resources/resources")
   else ()
-    set(RESOURCES_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/resources") 
-  endif () 
+    set(RESOURCES_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/resources")
+  endif ()
 
   # Copy resources to resources path
   add_custom_command(TARGET ${APP_NAME} POST_BUILD
